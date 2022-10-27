@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold underline m-10">Hello world!</h1>
+      <h1 className="text-3xl font-bold underline m-10 text-red-500">Hello worlds!</h1>
       <p>{greeting.data}</p>
       <button onClick={() => addExample.mutate()}>ADD example</button>
       <ul>
