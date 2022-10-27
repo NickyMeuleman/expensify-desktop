@@ -13,6 +13,8 @@ export const pageUrl =
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
+    width: 1920,
+    height: 1080,
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     webPreferences: {
       allowRunningInsecureContent: false, // https://www.electronjs.org/docs/latest/tutorial/security#8-do-not-enable-allowrunninginsecurecontent

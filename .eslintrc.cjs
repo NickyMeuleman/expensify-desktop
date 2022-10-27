@@ -3,6 +3,7 @@
 /** @type {import("eslint").Linter.Config} */
 const eslintConfig = {
   root: true,
+  env: { node: true },
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,

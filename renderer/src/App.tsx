@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { trpc } from "./utils/trpc";
 import Home from "./Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

@@ -1,6 +1,4 @@
-import "./App.css";
 import { trpc } from "./utils/trpc";
-import reactLogo from "./assets/react.svg";
 
 function Home() {
   const examples = trpc.example.getAll.useQuery();
@@ -18,15 +16,8 @@ function Home() {
   const greeting = trpc.greeting.useQuery({ name: "Nicky" });
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div>
+      <h1 className="text-3xl font-bold underline m-10">Hello world!</h1>
       <p>{greeting.data}</p>
       <button onClick={() => addExample.mutate()}>ADD example</button>
       <ul>
@@ -34,7 +25,6 @@ function Home() {
           return (
             <li
               key={idx}
-              className="example"
               onClick={() => {
                 removeExample.mutate({ id: example.id });
               }}
