@@ -17,6 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "../types/exposedInMainWorld.d.ts"],
+  "include": [
+    "src",
+    "../types/exposedInMainWorld.d.ts",
+    "postcss.config.cjs",
+    "tailwind.config.cjs"
+  ],
   "references": [{ "path": "../tsconfig.node.json" }]
 }
