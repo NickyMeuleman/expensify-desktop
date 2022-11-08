@@ -19,6 +19,7 @@
     "build:renderer": "cd ./renderer && tsc && vite build",
     "db:generate": "cd ./prisma && prisma generate",
     "db:push": "cd ./prisma && prisma db push",
+    "seed":"ts-node scripts/seed.ts",
     "vendors:update": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
     "postinstall": "npm run vendors:update && npm run db:generate"
   },

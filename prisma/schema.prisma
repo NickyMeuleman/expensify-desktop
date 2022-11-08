@@ -13,3 +13,30 @@ datasource db {
 model Example {
   id String @id @default(uuid())
 }
+
+model Store {
+  id       String    @id @default(uuid())
+  name     String    @unique
+  expenses Expense[]
+  vouchers Voucher[]
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  store       Store    @relation(fields: [storeId], references: [id])
+  storeId     String
+  date        DateTime
+  fullAmount  Int
+  paidAmount  Int
+  note        String?
+  description String?
+}
+
+model Voucher {
+  id         String   @id @default(uuid())
+  date       DateTime
+  store      Store    @relation(fields: [storeId], references: [id])
+  storeId    String
+  fullAmount Int
+  paidAmount Int
+}
