@@ -3,7 +3,17 @@ import { z } from "zod";
 
 export const expenseRouter = t.router({
   getAll: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.expense.findMany();
+    return ctx.prisma.expense.findMany({
+      select: {
+        date: true,
+        description: true,
+        fullAmount: true,
+        id: true,
+        note: true,
+        paidAmount: true,
+        store: { select: { name: true } },
+      },
+    });
   }),
   get: t.procedure
     .input(

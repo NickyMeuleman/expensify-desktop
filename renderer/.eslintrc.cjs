@@ -5,7 +5,7 @@ const eslintConfig = {
   root: false,
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     "eslint:recommended",
@@ -30,8 +30,12 @@ const eslintConfig = {
     sourceType: "module",
     project: ["./tsconfig.json", "../tsconfig.node.json"],
   },
+  // DataPicker parts are ignored as they're largely copy-pasted from the react-aria tailwind datepicker example
+  ignorePatterns: ["*.cjs", "components/DateRangePicker/*.tsx"],
   plugins: ["react", "react-hooks", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "react/prop-types": "off",
+  },
   overrides: [],
 };
 

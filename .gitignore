@@ -8,3 +8,4 @@ db.sqlite
 
 .vscode
 prisma/migrations
+old_db.json

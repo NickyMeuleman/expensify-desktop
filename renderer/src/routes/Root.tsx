@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { trpc } from "./utils/trpc";
-import Home from "./Home";
+import { trpc } from "../utils/trpc";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TRPCClientError, TRPCClientRuntime } from "@trpc/client";
 import type { TRPCLink } from "@trpc/client";
@@ -11,6 +10,10 @@ import {
   TRPCResponseMessage,
   TRPCResultMessage,
 } from "@trpc/server/rpc";
+import { Outlet, useLocation } from "react-router-dom";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { OverlayContainer } from "react-aria";
 
 // from @trpc/client/src/links/internals/transformResult
 // FIXME:
@@ -75,6 +78,8 @@ export function ipcLink<TRouter extends AnyRouter>(): TRPCLink<TRouter> {
 }
 
 function App() {
+  const { pathname } = useLocation();
+
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => {
     return trpc.createClient({
@@ -83,11 +88,21 @@ function App() {
   });
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <Home />
-      </QueryClientProvider>
-    </trpc.Provider>
+    <OverlayContainer>
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <div className="flex min-h-screen flex-col">
+            <div className="flex-1">
+              {pathname !== "/" ? <Header /> : null}
+              <main>
+                <Outlet />
+              </main>
+            </div>
+            <Footer />
+          </div>
+        </QueryClientProvider>
+      </trpc.Provider>
+    </OverlayContainer>
   );
 }
 
